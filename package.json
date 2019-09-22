@@ -1,6 +1,6 @@
 {
   "name": "expressjs",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "ExpressJS API",
   "main": "index.js",
   "scripts": {
