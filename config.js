@@ -1,18 +1,23 @@
-var mysql = require('mysql');
-var connection = mysql.createConnection({
+const Sequelize = require('sequelize');
+var mysql = require('mysql2');
+
+const sq = new Sequelize('tTSinsLGCB', 'tTSinsLGCB', '7HrlWnoqew', {
+  host: 'remotemysql.com',
+  dialect: 'mysql',
+  define: {
+    timestamps: false, // Default จะ where createdAt, updatedAt ให้อัตโนมัติ
+    freezeTableName: true // Default จะเปลี่ยนชื่อ table เช่น family => families, user => users
+  }
+})
+
+
+var db = mysql.createConnection({
   host     : 'remotemysql.com',
   user     : 'tTSinsLGCB',
   password : '7HrlWnoqew',
   database : 'tTSinsLGCB'
 });
  
-connection.connect();
- 
-// connection.query('SELECT 1 + 1 AS solution', function (error, results, fields) {
-//   if (error) throw error;
-//   console.log('The solution is: ', results[0].solution);
-// });
- 
-// connection.end();
+db.connect();
 
-module.exports = connection;
+module.exports = {sq, db};
